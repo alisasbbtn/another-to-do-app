@@ -1,0 +1,12 @@
+.MainContainer {
+  width: 500px;
+  height: 85vh;
+  background-color: #f6f5f1;
+  padding: 1rem 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}

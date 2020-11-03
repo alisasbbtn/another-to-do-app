@@ -1,0 +1,38 @@
+.TaskInput {
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.Input {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+}
+
+.Input:hover,
+.Input:focus {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.Button {
+  margin-left: 10px;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+}
+
+.Button ion-icon {
+  font-size: 1rem;
+  --ionicon-stroke-width: 16px;
+}
+
+.Button:hover {
+  color: #83D96C;
+}
