@@ -2,23 +2,23 @@
 
 .TaskInput {
   padding: 16px 0;
-  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
 }
 
 .Input {
   width: 100%;
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: 12px 20px;
+  font-size: .9rem;
   border: 1px solid $divider-color;
   border-radius: 20px;
   outline: none;
-}
 
-.Input:hover,
-.Input:focus {
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Lato', sans-serif;
+
+  &:focus {
+    border: 1px solid $primary-color-light;
+  }
 }
 
 .Button {
@@ -27,15 +27,15 @@
   outline: none;
   background-color: transparent;
   border: none;
-  border-radius: 5px;
   color: $divider-color;
-
-  ion-icon {
-    font-size: 1rem;
-    --ionicon-stroke-width: 16px;
-  }
+  transition: color .1s;
 
   &:hover {
-    color: $primary-color;
+    color: $primary-color-light;
+  }
+
+  ion-icon {
+    font-size: 2.5rem;
+    --ionicon-stroke-width: 18px;
   }
 }

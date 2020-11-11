@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap');
 
 * {
   padding: 0;
@@ -9,4 +10,6 @@
 body, html {
   height: 100%;
   color: $primary-text-color;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
 }
