@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './TaskInput.module.css';
+import classes from './TaskInput.module.scss';
 
 const taskInput = () => {
   return (

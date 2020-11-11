@@ -1,0 +1,11 @@
+@import "../../variables.scss";
+
+.Layout {
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(
+      to bottom right,
+      rgba($primary-color-dark, .8),
+      rgba($primary-color-dark, .5)
+    )
+}

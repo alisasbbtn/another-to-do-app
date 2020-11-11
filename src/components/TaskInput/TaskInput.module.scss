@@ -1,5 +1,7 @@
+@import "../../variables.scss";
+
 .TaskInput {
-  padding: 1rem 0;
+  padding: 16px 0;
   margin-bottom: 1rem;
   display: flex;
   justify-content: center;
@@ -9,7 +11,7 @@
   width: 100%;
   padding: 10px 20px;
   font-size: 1rem;
-  border: none;
+  border: 1px solid $divider-color;
   border-radius: 20px;
   outline: none;
 }
@@ -26,13 +28,14 @@
   background-color: transparent;
   border: none;
   border-radius: 5px;
-}
+  color: $divider-color;
 
-.Button ion-icon {
-  font-size: 1rem;
-  --ionicon-stroke-width: 16px;
-}
+  ion-icon {
+    font-size: 1rem;
+    --ionicon-stroke-width: 16px;
+  }
 
-.Button:hover {
-  color: #83D96C;
+  &:hover {
+    color: $primary-color;
+  }
 }

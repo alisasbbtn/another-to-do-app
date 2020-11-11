@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import classes from "./MainContainer.module.css";
+import classes from "./MainContainer.module.scss";
 
 import TaskInput from "../../components/TaskInput/TaskInput";
 
