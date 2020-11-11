@@ -10,14 +10,14 @@
   width: 100%;
   padding: 12px 20px;
   font-size: .9rem;
-  border: 1px solid $divider-color;
+  border: 1px solid $accent-color;
   border-radius: 20px;
   outline: none;
 
   font-family: 'Lato', sans-serif;
 
   &:focus {
-    border: 1px solid $primary-color-light;
+    border: 1px solid $primary-color;
   }
 }
 
@@ -27,11 +27,11 @@
   outline: none;
   background-color: transparent;
   border: none;
-  color: $divider-color;
-  transition: color .1s;
+  color: $accent-color;
+  transition: color .3s;
 
   &:hover {
-    color: $primary-color-light;
+    color: $primary-color;
   }
 
   ion-icon {

@@ -1,0 +1,93 @@
+@import "../../../variables.scss";
+
+.Task {
+  display: flex;
+  align-items: center;
+  padding: 12px 5px;
+  margin: 0 5px;
+  border-bottom: 1px solid rgba($divider-color, .3);
+
+  &:hover {
+    ion-icon {
+      display: inline;
+    }
+  }
+
+  ion-icon {
+    display: none;
+    color: $accent-color;
+    cursor: pointer;
+  }
+}
+
+.TaskContainer {
+  padding-left: 30px;
+  width: 100%;
+  position: relative;
+  display: block;
+
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &:last-child {
+    border: none;
+  }
+
+  input {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    &:checked~.CustomCheckbox {
+      background-color: $accent-color;
+
+      &:after {
+        display: block;
+      }
+    }
+
+    &:checked~.TaskContent {
+      text-decoration: line-through;
+      color: $accent-color;
+    }
+  }
+
+  &:hover input~.CustomCheckbox {
+    background-color: $primary-color;
+  }
+}
+
+.TaskContent {
+  transition: color .2s;
+}
+
+.CustomCheckbox {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 3px;
+  background-color: lighten($divider-color, 20%);
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}

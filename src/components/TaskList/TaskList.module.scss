@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.TaskList {
+  width: 100%;
+  overflow-y: scroll;
+  margin-bottom: 16px;
+  padding: 0 5px;
+
+  scrollbar-width: thin;
+  scrollbar-color: $accent-color transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $accent-color;
+    border-radius: 20px;
+    border: 3px solid transparent;
+  }
+}
