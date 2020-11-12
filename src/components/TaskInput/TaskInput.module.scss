@@ -2,8 +2,6 @@
 
 .TaskInput {
   padding: 16px 0;
-  display: flex;
-  justify-content: center;
 }
 
 .Input {
@@ -18,24 +16,5 @@
 
   &:focus {
     border: 1px solid $primary-color;
-  }
-}
-
-.Button {
-  margin-left: 10px;
-  cursor: pointer;
-  outline: none;
-  background-color: transparent;
-  border: none;
-  color: $accent-color;
-  transition: color .3s;
-
-  &:hover {
-    color: $primary-color;
-  }
-
-  ion-icon {
-    font-size: 2.5rem;
-    --ionicon-stroke-width: 18px;
   }
 }

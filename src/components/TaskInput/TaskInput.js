@@ -2,11 +2,15 @@ import React from 'react';
 
 import classes from './TaskInput.module.scss';
 
-const taskInput = () => {
+const taskInput = (props) => {
   return (
     <div className={classes.TaskInput}>
-      <input className={classes.Input} type="text" placeholder="Add a new task..."></input>
-      <button className={classes.Button}><ion-icon name="add-circle" title="Add Task"></ion-icon></button>
+      <input
+        className={classes.Input}
+        type="text"
+        placeholder="Add a new task..."
+        onKeyUp={props.taskAdded}
+      ></input>
     </div>
   );
 };

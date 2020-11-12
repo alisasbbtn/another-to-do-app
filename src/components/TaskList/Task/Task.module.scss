@@ -8,15 +8,13 @@
   border-bottom: 1px solid rgba($divider-color, .3);
 
   &:hover {
-    ion-icon {
-      display: inline;
+    .DeleteButton {
+      visibility: visible;
     }
   }
 
-  ion-icon {
-    display: none;
-    color: $accent-color;
-    cursor: pointer;
+  &:last-child {
+    border: none;
   }
 }
 
@@ -31,10 +29,6 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
-  &:last-child {
-    border: none;
-  }
 
   input {
     cursor: pointer;
@@ -89,5 +83,19 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+}
+
+.DeleteButton {
+  visibility: hidden;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  margin: 0 5px;
+  color: $primary-color-dark;
+
+  &:hover {
+    color: $accent-color;
   }
 }
