@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import classes from "./TaskList.module.scss";
+import classes from './TaskList.module.scss';
 
-import Task from "./Task/Task";
+import Task from './Task/Task';
 
 const taskList = (props) => {
   let tasks = props.tasks.map((task) => {
@@ -12,7 +12,7 @@ const taskList = (props) => {
         id={task.id}
         content={task.content}
         createdAt={task.createdAt}
-        isCompleted={task.id}
+        isCompleted={task.isCompleted}
         toggled={props.taskToggled}
         deleted={props.taskDeleted}
       />
