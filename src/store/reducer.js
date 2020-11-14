@@ -10,10 +10,10 @@ const addTask = (state, action) => {
   return updateObject(state, { tasks: updatedTasks });
 };
 
-const toggleTask = (state, action) => {
-  const taskIndex = state.tasks.findIndex((task) => task.id === action.id);
-  const updatedTasks = [...state.tasks];
-  updatedTasks[taskIndex].isCompleted = !updatedTasks[taskIndex].isCompleted;
+const updateTask = (state, action) => {
+  const updatedTasks = state.tasks.map((task) => {
+    return task.id === action.task.id ? action.task : task;
+  });
   return updateObject(state, { tasks: updatedTasks });
 };
 
@@ -24,11 +24,13 @@ const deleteTask = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_TASK:
+    case actionTypes.FETCH_TASKS_SUCCESS:
+      return updateObject(state, { tasks: action.tasks });
+    case actionTypes.ADD_TASK_SUCCESS:
       return addTask(state, action);
-    case actionTypes.TOGGLE_TASK:
-      return toggleTask(state, action);
-    case actionTypes.DELETE_TASK:
+    case actionTypes.UPDATE_TASK_SUCCESS:
+      return updateTask(state, action);
+    case actionTypes.DELETE_TASK_SUCCESS:
       return deleteTask(state, action);
     default:
       return state;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from '../../axios-tasks';
-import * as actionCreators from '../../store/actions';
+import * as actions from '../../store/actions';
 
 import classes from './MainContainer.module.scss';
 
@@ -14,43 +13,23 @@ class MainContainer extends Component {
   };
 
   componentDidMount() {
-    axios.get('/tasks.json').then((response) => {
-      const tasks = [];
-      for (let key in response.data) {
-        tasks.push({
-          ...response.data[key],
-          id: key,
-        });
-      }
-      this.setState({ tasks: tasks });
-    });
+    this.props.onFetchTasks();
   }
 
   addTaskHandler = (event) => {
     if (event.which === 13 && event.target.value) {
-      // TODO: Store in Firebase with Redux Thunk
-
-      // axios.post('/tasks.json', taskData).then((response) => {
-      // });
       this.props.onAddTask(event.target.value);
       event.target.value = '';
     }
   };
 
   toggleTaskHandler = (id) => {
-    // TODO: Store in Firebase with Redux Thunk
-    // axios
-    //   .patch('/tasks/' + id + '.json', {
-    //     isCompleted: tasks[taskIndex].isCompleted,
-    //   })
-    //   .then((response) => {
-    //   });
-  };
+    const taskIndex = this.props.tasks.findIndex((task) => task.id === id);
+    const taskData = this.props.tasks[taskIndex];
+    delete taskData.id;
+    taskData.isCompleted = !taskData.isCompleted;
 
-  deleteTaskHandler = (id) => {
-    // TODO: Store in Firebase with Redux Thunk
-    // axios.delete('/tasks/' + id + '.json').then(() => {
-    // });
+    this.props.onUpdateTask(taskData, id);
   };
 
   render() {
@@ -60,7 +39,7 @@ class MainContainer extends Component {
         <TaskList
           tasks={this.props.tasks}
           taskDeleted={this.props.onDeleteTask}
-          taskToggled={this.props.onToggleTask}
+          taskToggled={this.toggleTaskHandler}
         />
       </div>
     );
@@ -75,9 +54,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddTask: (content) => dispatch(actionCreators.addTask(content)),
-    onToggleTask: (id) => dispatch(actionCreators.toggleTask(id)),
-    onDeleteTask: (id) => dispatch(actionCreators.deleteTask(id)),
+    onFetchTasks: () => dispatch(actions.fetchTasks()),
+    onAddTask: (content) => dispatch(actions.addTask(content)),
+    onUpdateTask: (taskData, id) => dispatch(actions.updateTask(taskData, id)),
+    onDeleteTask: (id) => dispatch(actions.deleteTask(id)),
   };
 };
 
