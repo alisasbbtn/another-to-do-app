@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from '../../axios-tasks';
+import * as actionCreators from '../../store/actions';
 
 import classes from './MainContainer.module.scss';
 
 import TaskInput from '../../components/TaskInput/TaskInput';
 import TaskList from '../../components/TaskList/TaskList';
-
-import axios from '../../axios-tasks';
 
 class MainContainer extends Component {
   state = {
@@ -27,44 +28,29 @@ class MainContainer extends Component {
 
   addTaskHandler = (event) => {
     if (event.which === 13 && event.target.value) {
-      const taskData = {
-        content: event.target.value,
-        isCompleted: false,
-        createdAt: new Date(),
-      };
+      // TODO: Store in Firebase with Redux Thunk
 
-      axios.post('/tasks.json', taskData).then((response) => {
-        const task = { id: response.data.name, ...taskData };
-        this.setState({ tasks: [...this.state.tasks, task] });
-        event.target.value = '';
-      });
+      // axios.post('/tasks.json', taskData).then((response) => {
+      // });
+      this.props.onAddTask(event.target.value);
+      event.target.value = '';
     }
   };
 
   toggleTaskHandler = (id) => {
-    const taskIndex = this.state.tasks.findIndex((task) => task.id === id);
-    const tasks = [...this.state.tasks];
-    tasks[taskIndex].isCompleted = !tasks[taskIndex].isCompleted;
-
-    axios
-      .patch('/tasks/' + id + '.json', {
-        isCompleted: tasks[taskIndex].isCompleted,
-      })
-      .then((response) => {
-        this.setState({ tasks: tasks });
-      });
+    // TODO: Store in Firebase with Redux Thunk
+    // axios
+    //   .patch('/tasks/' + id + '.json', {
+    //     isCompleted: tasks[taskIndex].isCompleted,
+    //   })
+    //   .then((response) => {
+    //   });
   };
 
   deleteTaskHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
-      axios.delete('/tasks/' + id + '.json').then(() => {
-        const taskIndex = this.state.tasks.findIndex((task) => task.id === id);
-        const tasks = this.state.tasks.filter(
-          (item, index) => index !== taskIndex
-        );
-        this.setState({ tasks: tasks });
-      });
-    }
+    // TODO: Store in Firebase with Redux Thunk
+    // axios.delete('/tasks/' + id + '.json').then(() => {
+    // });
   };
 
   render() {
@@ -72,13 +58,27 @@ class MainContainer extends Component {
       <div className={classes.MainContainer}>
         <TaskInput taskAdded={this.addTaskHandler} />
         <TaskList
-          tasks={this.state.tasks}
-          taskDeleted={this.deleteTaskHandler}
-          taskToggled={this.toggleTaskHandler}
+          tasks={this.props.tasks}
+          taskDeleted={this.props.onDeleteTask}
+          taskToggled={this.props.onToggleTask}
         />
       </div>
     );
   }
 }
 
-export default MainContainer;
+const mapStateToProps = (state) => {
+  return {
+    tasks: state.tasks,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddTask: (content) => dispatch(actionCreators.addTask(content)),
+    onToggleTask: (id) => dispatch(actionCreators.toggleTask(id)),
+    onDeleteTask: (id) => dispatch(actionCreators.deleteTask(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
