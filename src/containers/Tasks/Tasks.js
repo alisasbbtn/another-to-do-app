@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions';
 
-import classes from './MainContainer.module.scss';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 
 import TaskInput from '../../components/TaskInput/TaskInput';
 import TaskList from '../../components/TaskList/TaskList';
 
-class MainContainer extends Component {
-  state = {
-    tasks: [],
-  };
-
+class Tasks extends Component {
   componentDidMount() {
     this.props.onFetchTasks();
   }
@@ -34,14 +29,14 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div className={classes.MainContainer}>
+      <React.Fragment>
         <TaskInput taskAdded={this.addTaskHandler} />
         <TaskList
           tasks={this.props.tasks}
           taskDeleted={this.props.onDeleteTask}
           taskToggled={this.toggleTaskHandler}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -61,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

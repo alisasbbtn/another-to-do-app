@@ -1,9 +1,14 @@
 import './App.scss';
+import { BrowserRouter } from 'react-router-dom';
 
-import Layout from './containers/Layout/Layout';
+import Layout from './components/Layout/Layout';
 
 function App() {
-  return <Layout />;
+  return (
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  );
 }
 
 export default App;

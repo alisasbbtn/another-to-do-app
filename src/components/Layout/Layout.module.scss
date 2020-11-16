@@ -3,9 +3,22 @@
 .Layout {
   height: 100vh;
   position: relative;
-  background: linear-gradient(
-      to bottom right,
+  background: linear-gradient(to bottom right,
       rgba($primary-color-dark, .8),
-      rgba($primary-color-dark, .5)
-    )
+      rgba($primary-color-dark, .5))
+}
+
+.MainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 85vh;
+  background-color: $primary-color-text;
+  padding: 25px 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
 }

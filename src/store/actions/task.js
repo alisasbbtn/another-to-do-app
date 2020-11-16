@@ -1,9 +1,5 @@
-import axios from '../axios-tasks';
-
-export const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS';
-export const ADD_TASK_SUCCESS = 'ADD_TASK_SUCCESS';
-export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS';
-export const DELETE_TASK_SUCCESS = 'DELETE_TASK_SUCCESS';
+import axios from '../../axios-tasks';
+import * as actionTypes from './actionTypes';
 
 export const fetchTasks = () => {
   return (dispatch) => {
@@ -22,7 +18,7 @@ export const fetchTasks = () => {
 
 export const fetchTasksSuccess = (tasks) => {
   return {
-    type: FETCH_TASKS_SUCCESS,
+    type: actionTypes.FETCH_TASKS_SUCCESS,
     tasks,
   };
 };
@@ -43,7 +39,7 @@ export const addTask = (taskContent) => {
 
 export const addTaskSuccess = (task) => {
   return {
-    type: ADD_TASK_SUCCESS,
+    type: actionTypes.ADD_TASK_SUCCESS,
     task,
   };
 };
@@ -59,7 +55,7 @@ export const updateTask = (taskData, id) => {
 
 export const updateTaskSuccess = (task) => {
   return {
-    type: UPDATE_TASK_SUCCESS,
+    type: actionTypes.UPDATE_TASK_SUCCESS,
     task,
   };
 };
@@ -74,7 +70,7 @@ export const deleteTask = (taskId) => {
 
 export const deleteTaskSuccess = (taskId) => {
   return {
-    type: DELETE_TASK_SUCCESS,
+    type: actionTypes.DELETE_TASK_SUCCESS,
     id: taskId,
   };
 };
